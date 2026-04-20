@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
+import { LanguageProvider } from '@/providers/LanguageProvider'
 
 const fontDisplay = Space_Grotesk({
   subsets: ['latin'],
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontDisplay.variable} font-sans antialiased bg-[#0A0A0A] text-foreground min-h-screen selection:bg-primary/30`}
       >
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { useLanguage } from '@/providers/LanguageProvider'
 
 interface BookingEvent {
   id: string
@@ -18,8 +19,8 @@ interface CalendarProps {
   role: 'ADMIN' | 'LEADER'
 }
 
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-const MONTHS = [
+const DAYS_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const MONTHS_EN = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
@@ -32,24 +33,25 @@ function getFirstDayOfMonth(year: number, month: number) {
   return new Date(year, month, 1).getDay()
 }
 
-const statusConfig = {
-  PENDING: { color: 'bg-yellow-500', border: 'border-yellow-500/30', text: 'text-yellow-500', label: 'Pending' },
-  APPROVED: { color: 'bg-emerald-500', border: 'border-emerald-500/30', text: 'text-emerald-500', label: 'Approved' },
-  CANCELLED: { color: 'bg-red-500/60', border: 'border-red-500/30', text: 'text-red-400', label: 'Cancelled' },
-}
-
-const meetingLabels: Record<string, string> = {
-  '15m': '15 min',
-  '30m': '30 min',
-  '60m': '60 min',
-  '>60m': '> 60 min',
-}
-
 export default function Calendar({ bookings, role }: CalendarProps) {
   const now = new Date()
   const [currentMonth, setCurrentMonth] = useState(now.getMonth())
   const [currentYear, setCurrentYear] = useState(now.getFullYear())
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
+  const { t } = useLanguage()
+
+  const statusConfig = {
+    PENDING: { color: 'bg-yellow-500', border: 'border-yellow-500/30', text: 'text-yellow-500', label: t('cal.pending') },
+    APPROVED: { color: 'bg-emerald-500', border: 'border-emerald-500/30', text: 'text-emerald-500', label: t('cal.approved') },
+    CANCELLED: { color: 'bg-red-500/60', border: 'border-red-500/30', text: 'text-red-400', label: t('cal.cancelled') },
+  }
+
+  const meetingLabels: Record<string, string> = {
+    '15m': t('cal.15m'),
+    '30m': t('cal.30m'),
+    '60m': t('cal.60m'),
+    '>60m': t('cal.60m_plus'),
+  }
 
   const bookingsByDate = useMemo(() => {
     const map: Record<string, BookingEvent[]> = {}
@@ -66,22 +68,14 @@ export default function Calendar({ bookings, role }: CalendarProps) {
   const firstDay = getFirstDayOfMonth(currentYear, currentMonth)
 
   const prevMonth = () => {
-    if (currentMonth === 0) {
-      setCurrentMonth(11)
-      setCurrentYear(y => y - 1)
-    } else {
-      setCurrentMonth(m => m - 1)
-    }
+    if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(y => y - 1) }
+    else { setCurrentMonth(m => m - 1) }
     setSelectedDate(null)
   }
 
   const nextMonth = () => {
-    if (currentMonth === 11) {
-      setCurrentMonth(0)
-      setCurrentYear(y => y + 1)
-    } else {
-      setCurrentMonth(m => m + 1)
-    }
+    if (currentMonth === 11) { setCurrentMonth(0); setCurrentYear(y => y + 1) }
+    else { setCurrentMonth(m => m + 1) }
     setSelectedDate(null)
   }
 
@@ -106,13 +100,10 @@ export default function Calendar({ bookings, role }: CalendarProps) {
       <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-3">
           <h2 className="text-lg font-bold font-display text-foreground">
-            {MONTHS[currentMonth]} {currentYear}
+            {MONTHS_EN[currentMonth]} {currentYear}
           </h2>
-          <button
-            onClick={goToday}
-            className="text-xs px-2.5 py-1 rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors"
-          >
-            Today
+          <button onClick={goToday} className="text-xs px-2.5 py-1 rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors">
+            {t('cal.today')}
           </button>
         </div>
         <div className="flex gap-1">
@@ -127,10 +118,8 @@ export default function Calendar({ bookings, role }: CalendarProps) {
 
       {/* Day Headers */}
       <div className="grid grid-cols-7 border-b border-border">
-        {DAYS.map(d => (
-          <div key={d} className="text-center text-xs font-semibold text-muted-foreground py-2">
-            {d}
-          </div>
+        {DAYS_EN.map(d => (
+          <div key={d} className="text-center text-xs font-semibold text-muted-foreground py-2">{d}</div>
         ))}
       </div>
 
@@ -160,7 +149,6 @@ export default function Calendar({ bookings, role }: CalendarProps) {
                 {day}
               </span>
 
-              {/* Event dots */}
               {dayBookings.length > 0 && (
                 <div className="mt-0.5 space-y-0.5">
                   {dayBookings.slice(0, 3).map((b, i) => {
@@ -202,7 +190,7 @@ export default function Calendar({ bookings, role }: CalendarProps) {
               weekday: 'long', month: 'long', day: 'numeric'
             })}
             <span className="ml-2 text-muted-foreground font-normal">
-              {selectedBookings.length === 0 ? '— No meetings' : `— ${selectedBookings.length} meeting(s)`}
+              {selectedBookings.length === 0 ? t('cal.no_meetings') : `— ${selectedBookings.length} ${t('cal.meetings')}`}
             </span>
           </h3>
 

@@ -2,12 +2,14 @@
 
 import { useRef, useState } from 'react'
 import { createBooking } from './actions'
+import { useLanguage } from '@/providers/LanguageProvider'
 
 export default function BookingForm() {
   const formRef = useRef<HTMLFormElement>(null)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
+  const { t } = useLanguage()
 
   const handleSubmit = async (formData: FormData) => {
     setLoading(true)
@@ -29,12 +31,12 @@ export default function BookingForm() {
     <div className="bg-card shadow-glow-sm rounded-xl p-6 border border-border">
       <h2 className="text-xl font-bold font-display text-primary mb-6 flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-        Request New Meeting
+        {t('leader.form_title')}
       </h2>
 
       {success && (
         <div className="bg-primary/10 border border-primary/20 text-primary p-3 rounded-md mb-4 text-sm">
-          Booking requested successfully! Waiting for Director approval.
+          {t('leader.success')}
         </div>
       )}
 
@@ -46,22 +48,22 @@ export default function BookingForm() {
 
       <form ref={formRef} action={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium mb-1 text-foreground/80">Meeting Type</label>
+          <label className="block text-sm font-medium mb-1 text-foreground/80">{t('leader.meeting_type')}</label>
           <select 
             name="meetingType" 
             className="w-full p-2.5 rounded-md bg-background border border-border text-foreground focus:outline-none focus:border-primary transition-all"
             required
           >
-            <option value="">-- Select Duration --</option>
-            <option value="15m">15 Minutes (Quick Sync / F1 Intro)</option>
-            <option value="30m">30 Minutes (Standard Consultation)</option>
-            <option value="60m">60 Minutes (VIP Closing Support)</option>
-            <option value=">60m">&gt; 60 Minutes (Team Training)</option>
+            <option value="">{t('leader.select_duration')}</option>
+            <option value="15m">{t('leader.15m')}</option>
+            <option value="30m">{t('leader.30m')}</option>
+            <option value="60m">{t('leader.60m')}</option>
+            <option value=">60m">{t('leader.60m_plus')}</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-foreground/80">Preferred Time (Your Local Time)</label>
+          <label className="block text-sm font-medium mb-1 text-foreground/80">{t('leader.preferred_time')}</label>
           <input 
             type="datetime-local" 
             name="preferredTime"
@@ -71,12 +73,12 @@ export default function BookingForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-foreground/80">Reason / Notes</label>
+          <label className="block text-sm font-medium mb-1 text-foreground/80">{t('leader.reason')}</label>
           <textarea 
             name="reason" 
             rows={4}
             className="w-full p-2.5 rounded-md bg-background border border-border text-foreground focus:outline-none focus:border-primary transition-all"
-            placeholder="E.g. VIP client wants to invest 50k$, need Director to close..."
+            placeholder={t('leader.reason_placeholder')}
             required
           />
         </div>
@@ -86,7 +88,7 @@ export default function BookingForm() {
           disabled={loading}
           className="bg-primary hover:bg-primary-60 text-primary-foreground font-semibold px-6 py-2.5 rounded-md w-full sm:w-auto transition-all disabled:opacity-50 mt-4"
         >
-          {loading ? 'Submitting...' : 'Submit Request'}
+          {loading ? t('leader.submitting') : t('leader.submit')}
         </button>
       </form>
     </div>
