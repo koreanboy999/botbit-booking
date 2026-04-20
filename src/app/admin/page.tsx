@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import LogoutButton from '@/components/LogoutButton'
 import ActionButtons from './ActionButtons'
+import Calendar from '@/components/Calendar'
 
 export default async function AdminDashboard() {
   const token = cookies().get('session')?.value
@@ -18,15 +19,22 @@ export default async function AdminDashboard() {
         select: { displayName: true, username: true }
       }
     },
-    orderBy: [
-      { status: 'asc' }, // PENDING comes first usually alphabetically, but wait: APPROVED, CANCELLED, PENDING. Let's order by createdAt.
-      { createdAt: 'desc' }
-    ]
+    orderBy: { createdAt: 'desc' }
   })
 
-  // Grouping for better UI
   const pending = bookings.filter(b => b.status === 'PENDING')
   const completed = bookings.filter(b => b.status !== 'PENDING')
+
+  const calendarBookings = bookings.map(b => ({
+    id: b.id,
+    meetingType: b.meetingType,
+    preferredTime: b.preferredTime.toISOString(),
+    reason: b.reason,
+    status: b.status,
+    zoomLink: b.zoomLink,
+    adminNote: b.adminNote,
+    user: b.user,
+  }))
 
   const renderTable = (list: typeof bookings, showActions: boolean) => {
     if (list.length === 0) return <div className="text-muted-foreground p-4 italic text-sm">No bookings in this category.</div>
@@ -75,7 +83,7 @@ export default async function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-foreground p-6">
-      <header className="max-w-6xl mx-auto flex justify-between items-center mb-10 pb-4 border-b border-border">
+      <header className="max-w-7xl mx-auto flex justify-between items-center mb-10 pb-4 border-b border-border">
         <div>
           <h1 className="text-2xl font-bold font-display text-primary flex items-center gap-2">
             BBCC<span className="text-muted-foreground">::</span>Director Hub
@@ -85,7 +93,11 @@ export default async function AdminDashboard() {
         <LogoutButton />
       </header>
 
-      <main className="max-w-6xl mx-auto space-y-8">
+      <main className="max-w-7xl mx-auto space-y-8">
+        {/* Calendar Overview */}
+        <Calendar bookings={calendarBookings} role="ADMIN" />
+
+        {/* Pending Actions */}
         <div className="bg-card shadow-glow-sm rounded-xl p-6 border border-primary/20 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-1 bg-primary h-full"></div>
           <h2 className="text-xl font-bold font-display text-foreground mb-6 flex items-center gap-2">
@@ -95,6 +107,7 @@ export default async function AdminDashboard() {
           {renderTable(pending, true)}
         </div>
 
+        {/* History */}
         <div className="bg-card shadow-glow-sm rounded-xl p-6 border border-border">
           <h2 className="text-xl font-bold font-display text-foreground mb-6 text-muted-foreground">
             Processed History
