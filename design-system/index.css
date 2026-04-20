@@ -1,0 +1,25 @@
+/* ============================================================
+   BotBit.cc Design System — Entry Point
+   Import this single file to get everything.
+
+   Usage:
+     @import './design-system/index.css';
+   
+   Or in Next.js globals.css:
+     @import '../design-system/index.css';
+   ============================================================ */
+
+/* 1. Design Tokens (CSS custom properties) */
+@import './tokens.css';
+
+/* 2. Base styles (reset, fonts, body, headings) */
+@import './base.css';
+
+/* 3. Utility classes (glass-card, grid-bg, text-gradient, etc.) */
+@import './utilities.css';
+
+/* 4. Component classes (btn, card, terminal, badge, input, etc.) */
+@import './components.css';
+
+/* 5. Animations (keyframes + utility classes) */
+@import './animations.css';

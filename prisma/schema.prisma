@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String           @id @default(cuid())
+  username     String           @unique
+  passwordHash String
+  displayName  String
+  role         Role             @default(LEADER)
+  bookings     BookingRequest[]
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+}
+
+enum Role {
+  ADMIN
+  LEADER
+}
+
+model BookingRequest {
+  id            String   @id @default(cuid())
+  meetingType   String   // "15m", "30m", "60m", ">60m"
+  preferredTime DateTime // requested time
+  reason        String   // leader notes
+  status        Status   @default(PENDING)
+  zoomLink      String?  // admin provided
+  adminNote     String?  // admin notes on rejection
+  
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum Status {
+  PENDING
+  APPROVED
+  CANCELLED
+}

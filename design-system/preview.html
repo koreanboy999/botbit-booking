@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BotBit.cc Design System — Preview</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+    <!-- Grid Background Overlay -->
+    <div class="grid-bg" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:10;display:flex;flex-direction:column;min-height:100vh;">
+
+        <!-- ═══════ HEADER ═══════ -->
+        <header class="header">
+            <div class="header-logo">
+                <div class="header-logo-icon">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="header-logo-text">BotBit</h2>
+            </div>
+            <div style="display:flex;flex:1;justify-content:flex-end;gap:2rem;">
+                <div class="nav-links">
+                    <a class="nav-link" href="#">Markets</a>
+                    <a class="nav-link" href="#">How it Works</a>
+                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Security</a>
+                </div>
+                <button class="btn btn-primary">
+                    <span class="truncate">Launch App</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ═══════ HERO SECTION ═══════ -->
+        <main style="flex:1;padding:3rem 1rem;max-width:80rem;margin:0 auto;width:100%;">
+            <div style="display:flex;flex-wrap:wrap;gap:3rem;align-items:center;">
+
+                <!-- Left Column -->
+                <div style="flex:1;min-width:320px;display:flex;flex-direction:column;gap:2rem;">
+                    <div>
+                        <span class="badge">🤖 AI-Powered Trading Platform</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:1rem;">
+                        <h1>
+                            Trade Smarter with <span class="text-gradient">BotBit</span>
+                        </h1>
+                        <p class="text-muted" style="font-size:1.125rem;">
+                            AI-powered multi-asset trading platform with a high-tech, institutional-grade terminal.
+                            Elevate your strategy with predictive analytics and automated execution.
+                        </p>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+                        <button class="btn btn-cta btn-lg">
+                            <span class="truncate">Start Trading</span>
+                        </button>
+                        <button class="btn btn-outline btn-lg">
+                            <span class="truncate">View Demo</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Terminal -->
+                <div style="flex:1;min-width:320px;">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot terminal-dot--red"></div>
+                                <div class="terminal-dot terminal-dot--yellow"></div>
+                                <div class="terminal-dot terminal-dot--green"></div>
+                            </div>
+                            <div class="terminal-title">botbit-terminal ~ root</div>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line terminal-line--primary">&gt; initializing BotBit AI core v4.2.1...
+                            </p>
+                            <p class="terminal-line">&gt; connecting to market data streams... [OK]</p>
+                            <p class="terminal-line" style="margin-bottom:1rem;">&gt; analyzing patterns across 150+
+                                pairs... [OK]</p>
+                            <div class="terminal-signal">
+                                <p class="terminal-signal-title">LIVE SIGNAL DETECTED</p>
+                                <p>Pair: <span class="text-primary">BTC/USDT</span></p>
+                                <p>Action: <span style="color:#4ade80;font-weight:700;">LONG</span></p>
+                                <p>Confidence: <span class="text-primary">94.7%</span></p>
+                                <p>Entry Target: $64,250.00</p>
+                            </div>
+                            <p class="terminal-line terminal-line--pulsing">&gt; waiting for next signal...</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ═══════ STATS GRID ═══════ -->
+            <div style="margin-top:5rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;">
+                <div class="card" style="cursor:default;">
+                    <div
+                        style="display:flex;align-items:center;gap:0.5rem;color:var(--color-primary);margin-bottom:0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size:1.25rem;">account_balance_wallet</span>
+                        <p style="font-size:0.875rem;font-weight:500;color:var(--color-text-400);">Total Value Locked
+                        </p>
+                    </div>
+                    <p style="font-size:1.875rem;font-weight:700;color:white;letter-spacing:-0.025em;">$847M+</p>
+                </div>
+                <div class="card" style="cursor:default;">
+                    <div
+                        style="display:flex;align-items:center;gap:0.5rem;color:var(--color-primary);margin-bottom:0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size:1.25rem;">group</span>
+                        <p style="font-size:0.875rem;font-weight:500;color:var(--color-text-400);">Traders</p>
+                    </div>
+                    <p style="font-size:1.875rem;font-weight:700;color:white;letter-spacing:-0.025em;">124,000+</p>
+                </div>
+                <div class="card" style="cursor:default;">
+                    <div
+                        style="display:flex;align-items:center;gap:0.5rem;color:var(--color-primary);margin-bottom:0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size:1.25rem;">trending_up</span>
+                        <p style="font-size:0.875rem;font-weight:500;color:var(--color-text-400);">Win Rate</p>
+                    </div>
+                    <p style="font-size:1.875rem;font-weight:700;color:var(--color-primary);letter-spacing:-0.025em;">
+                        94.7%</p>
+                </div>
+                <div class="card" style="cursor:default;">
+                    <div
+                        style="display:flex;align-items:center;gap:0.5rem;color:var(--color-primary);margin-bottom:0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size:1.25rem;">monitoring</span>
+                        <p style="font-size:0.875rem;font-weight:500;color:var(--color-text-400);">Markets</p>
+                    </div>
+                    <p style="font-size:1.875rem;font-weight:700;color:white;letter-spacing:-0.025em;">150+</p>
+                </div>
+            </div>
+
+            <!-- ═══════ COMPONENT SHOWCASE ═══════ -->
+            <div style="margin-top:5rem;display:flex;flex-direction:column;gap:3rem;">
+
+                <h2>Component Showcase</h2>
+
+                <!-- Buttons -->
+                <div>
+                    <h3 style="margin-bottom:1rem;color:var(--color-text-400);">Buttons</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+                        <button class="btn btn-primary">Primary</button>
+                        <button class="btn btn-cta">CTA Glow</button>
+                        <button class="btn btn-outline">Outline</button>
+                        <button class="btn btn-ghost">Ghost</button>
+                        <button class="btn btn-danger">Danger</button>
+                        <button class="btn btn-primary" disabled>Disabled</button>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div>
+                    <h3 style="margin-bottom:1rem;color:var(--color-text-400);">Badges</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+                        <span class="badge badge-success">🟢 Active</span>
+                        <span class="badge badge-warning">⚠️ Pending</span>
+                        <span class="badge badge-error">🔴 Error</span>
+                        <span class="badge badge-info">ℹ️ Info</span>
+                        <span class="badge badge-neutral">Default</span>
+                    </div>
+                </div>
+
+                <!-- Inputs -->
+                <div>
+                    <h3 style="margin-bottom:1rem;color:var(--color-text-400);">Inputs</h3>
+                    <div style="display:flex;flex-direction:column;gap:1rem;max-width:400px;">
+                        <div>
+                            <label class="input-label">Wallet Address</label>
+                            <input class="input" type="text" placeholder="0x..." />
+                        </div>
+                        <div>
+                            <label class="input-label">Amount (USDT)</label>
+                            <input class="input input-error" type="number" placeholder="Min: $100" value="50" />
+                            <p class="input-error-text">Minimum investment is $100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div>
+                    <h3 style="margin-bottom:1rem;color:var(--color-text-400);">Table</h3>
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Pair</th>
+                                    <th>Action</th>
+                                    <th>Confidence</th>
+                                    <th>Entry</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BTC/USDT</td>
+                                    <td style="color:#4ade80;font-weight:700;">LONG</td>
+                                    <td style="color:var(--color-primary);">94.7%</td>
+                                    <td>$64,250.00</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>ETH/USDT</td>
+                                    <td style="color:#4ade80;font-weight:700;">LONG</td>
+                                    <td style="color:var(--color-primary);">91.2%</td>
+                                    <td>$3,420.00</td>
+                                    <td><span class="badge badge-warning">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>SOL/USDT</td>
+                                    <td style="color:var(--color-error);font-weight:700;">SHORT</td>
+                                    <td style="color:var(--color-primary);">87.5%</td>
+                                    <td>$142.80</td>
+                                    <td><span class="badge badge-neutral">Closed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Glass Cards -->
+                <div>
+                    <h3 style="margin-bottom:1rem;color:var(--color-text-400);">Cards</h3>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;">
+                        <div class="card card-interactive">
+                            <h4>Starter Plan</h4>
+                            <p class="text-muted" style="font-size:0.875rem;">$100 – $999</p>
+                            <p style="font-size:1.5rem;font-weight:700;color:var(--color-primary);margin-top:0.5rem;">
+                                0.8% <span
+                                    style="font-size:0.875rem;color:var(--color-text-400);font-weight:400;">daily</span>
+                            </p>
+                        </div>
+                        <div class="card card-interactive">
+                            <h4>Growth Plan</h4>
+                            <p class="text-muted" style="font-size:0.875rem;">$1,000 – $9,999</p>
+                            <p style="font-size:1.5rem;font-weight:700;color:var(--color-primary);margin-top:0.5rem;">
+                                1.2% <span
+                                    style="font-size:0.875rem;color:var(--color-text-400);font-weight:400;">daily</span>
+                            </p>
+                        </div>
+                        <div class="card card-interactive">
+                            <h4>VIP Plan</h4>
+                            <p class="text-muted" style="font-size:0.875rem;">$10,000+</p>
+                            <p style="font-size:1.5rem;font-weight:700;color:var(--color-primary);margin-top:0.5rem;">
+                                1.5% <span
+                                    style="font-size:0.875rem;color:var(--color-text-400);font-weight:400;">daily</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skeletons -->
+                <div>
+                    <h3 style="margin-bottom:1rem;color:var(--color-text-400);">Skeleton Loading</h3>
+                    <div class="card" style="display:flex;flex-direction:column;gap:0.75rem;max-width:400px;">
+                        <div class="skeleton" style="height:12px;width:60%;"></div>
+                        <div class="skeleton" style="height:32px;width:40%;"></div>
+                        <div class="skeleton" style="height:12px;width:80%;"></div>
+                        <div class="skeleton" style="height:12px;width:50%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+</body>
+
+</html>

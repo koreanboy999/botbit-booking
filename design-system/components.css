@@ -1,0 +1,630 @@
+/* ============================================================
+   BotBit.cc Design System — Component Styles
+   Pure CSS component classes extracted from Stitch output
+   ============================================================ */
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+   From Stitch: Launch App, Start Trading, View Demo
+   ═══════════════════════════════════════════ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-wide);
+    border-radius: var(--radius-lg);
+    /* rounded-lg from Stitch */
+    padding: 0 var(--space-6);
+    height: 2.5rem;
+    /* h-10 */
+    min-width: 84px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    white-space: nowrap;
+}
+
+/* Primary — "Launch App" / "Start Trading" */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-bg-dark);
+    box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+    box-shadow: var(--shadow-btn-hover);
+}
+
+/* Primary Large — Hero CTA buttons */
+.btn-lg {
+    height: 3rem;
+    /* h-12 */
+    font-size: var(--text-base);
+    min-width: 140px;
+    padding: 0 var(--space-6);
+}
+
+.btn-cta {
+    background-color: var(--color-primary);
+    color: var(--color-bg-dark);
+    box-shadow: var(--shadow-btn-cta);
+}
+
+.btn-cta:hover {
+    box-shadow: var(--shadow-btn-cta-hover);
+}
+
+/* Outline — "View Demo" */
+.btn-outline {
+    background: transparent;
+    color: var(--color-text-white);
+    border: 2px solid var(--color-primary-50);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary-10);
+}
+
+/* Ghost — Nav links style */
+.btn-ghost {
+    background: transparent;
+    color: var(--color-text-400);
+    box-shadow: none;
+    min-width: auto;
+    padding: var(--space-2) var(--space-3);
+    height: auto;
+    font-weight: var(--font-medium);
+}
+
+.btn-ghost:hover {
+    color: var(--color-primary);
+    box-shadow: none;
+}
+
+/* Danger */
+.btn-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger:hover {
+    background-color: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Disabled */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Loading */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-loading .btn-spinner {
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ═══════════════════════════════════════════
+   BADGE / CHIP
+   From Stitch: "🤖 AI-Powered Trading Platform"
+   ═══════════════════════════════════════════ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 2rem;
+    /* h-8 */
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-full);
+    border: var(--border-badge);
+    /* border-primary/30 */
+    background-color: var(--color-primary-10);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-normal);
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.badge-success {
+    background-color: var(--color-primary-10);
+    color: var(--color-primary);
+    border-color: var(--color-primary-20);
+}
+
+.badge-warning {
+    background-color: rgba(234, 179, 8, 0.1);
+    color: var(--color-warning);
+    border-color: rgba(234, 179, 8, 0.2);
+}
+
+.badge-error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.badge-info {
+    background-color: rgba(0, 212, 255, 0.1);
+    color: var(--color-info);
+    border-color: rgba(0, 212, 255, 0.2);
+}
+
+.badge-neutral {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-300);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ═══════════════════════════════════════════
+   CARD
+   From Stitch: Stats cards with glass effect
+   ═══════════════════════════════════════════ */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    /* rounded-xl */
+    background: var(--color-bg-elevated);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: var(--border-glass);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.card:hover,
+.card-hover:hover {
+    box-shadow: var(--shadow-card-hover);
+    /* 0 0 20px rgba(0,255,136,0.15) */
+}
+
+.card-interactive {
+    cursor: pointer;
+}
+
+.card-interactive:hover {
+    border-color: var(--color-primary-20);
+    box-shadow: var(--shadow-card-hover);
+}
+
+
+/* ═══════════════════════════════════════════
+   STAT CARD
+   From Stitch: $847M+, 124,000+, 94.7%, 150+
+   ═══════════════════════════════════════════ */
+
+.stat-card {
+    composes: card;
+}
+
+.stat-card .stat-icon-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary);
+    margin-bottom: var(--space-1);
+}
+
+.stat-card .stat-icon-row .material-symbols-outlined {
+    font-size: var(--text-xl);
+}
+
+.stat-card .stat-label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-normal);
+    color: var(--color-text-400);
+}
+
+.stat-card .stat-value {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: var(--color-text-white);
+    letter-spacing: var(--tracking-tight);
+}
+
+@media (min-width: 1024px) {
+    .stat-card .stat-value {
+        font-size: var(--text-3xl);
+    }
+}
+
+.stat-card .stat-value.accent {
+    color: var(--color-primary);
+}
+
+
+/* ═══════════════════════════════════════════
+   TERMINAL
+   From Stitch: AI terminal preview in hero
+   ═══════════════════════════════════════════ */
+
+.terminal {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: var(--border-glass-strong);
+    box-shadow: var(--shadow-terminal);
+    background: var(--color-bg-elevated);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-primary-20);
+    background: var(--color-bg-terminal-header);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: var(--space-1-5);
+}
+
+.terminal-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: var(--radius-full);
+}
+
+.terminal-dot--red {
+    background-color: var(--color-dot-red);
+}
+
+.terminal-dot--yellow {
+    background-color: var(--color-dot-yellow);
+}
+
+.terminal-dot--green {
+    background-color: var(--color-dot-green);
+}
+
+.terminal-title {
+    margin: 0 auto;
+    font-size: var(--text-xs);
+    color: var(--color-text-400);
+    font-family: var(--font-mono);
+}
+
+.terminal-body {
+    padding: var(--space-6);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-300);
+    min-height: 300px;
+    background: var(--color-bg-terminal);
+}
+
+.terminal-line {
+    margin-bottom: var(--space-2);
+}
+
+.terminal-line--primary {
+    color: var(--color-primary);
+}
+
+.terminal-line--pulsing {
+    color: var(--color-text-500);
+    animation: terminal-pulse 2s ease-in-out infinite;
+}
+
+/* Terminal signal block */
+.terminal-signal {
+    border-left: 2px solid var(--color-primary);
+    padding-left: var(--space-4);
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-4);
+    background-color: var(--color-primary-5);
+}
+
+.terminal-signal-title {
+    color: var(--color-text-white);
+    font-weight: var(--font-bold);
+}
+
+/* Live indicator */
+.terminal-live {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-left: auto;
+}
+
+.terminal-live-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    animation: terminal-pulse 2s ease-in-out infinite;
+}
+
+.terminal-live-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-500);
+    font-family: var(--font-mono);
+}
+
+
+/* ═══════════════════════════════════════════
+   HEADER / NAVBAR
+   From Stitch: Sticky glassmorphism header
+   ═══════════════════════════════════════════ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-elevated);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-bottom: 1px solid var(--color-primary-20);
+}
+
+@media (min-width: 1024px) {
+    .header {
+        padding-left: var(--space-10);
+        padding-right: var(--space-10);
+    }
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.header-logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+}
+
+.header-logo-text {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-white);
+}
+
+.nav-links {
+    display: none;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+}
+
+.nav-link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-normal);
+    color: var(--color-text-300);
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+
+/* ═══════════════════════════════════════════
+   INPUTS
+   Extended from Stitch design language
+   ═══════════════════════════════════════════ */
+
+.input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    transition: all 0.2s ease;
+}
+
+.input::placeholder {
+    color: var(--color-text-500);
+}
+
+.input:focus {
+    border-color: var(--color-primary-50);
+    box-shadow: 0 0 0 3px var(--color-primary-10);
+    outline: none;
+}
+
+.input-error {
+    border-color: var(--color-error);
+}
+
+.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-300);
+    margin-bottom: var(--space-2);
+}
+
+.input-helper {
+    font-size: var(--text-xs);
+    color: var(--color-text-500);
+    margin-top: var(--space-1);
+}
+
+.input-error-text {
+    font-size: var(--text-sm);
+    color: var(--color-error);
+    margin-top: var(--space-2);
+}
+
+
+/* ═══════════════════════════════════════════
+   TABLE
+   Extended from Stitch design language
+   ═══════════════════════════════════════════ */
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: var(--border-glass);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+}
+
+.table th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    font-weight: var(--font-medium);
+    color: var(--color-text-400);
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-primary-10);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-text-100);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.table tr:hover td {
+    background: var(--color-primary-5);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ═══════════════════════════════════════════
+   MODAL / DIALOG
+   Extended from Stitch design language
+   ═══════════════════════════════════════════ */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-overlay);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+}
+
+.modal {
+    width: 100%;
+    max-width: 480px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-dark);
+    border: var(--border-glass-strong);
+    box-shadow: var(--shadow-terminal);
+    padding: var(--space-6);
+    animation: scale-in 0.2s ease-out;
+}
+
+.modal-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-text-white);
+    margin-bottom: var(--space-4);
+}
+
+
+/* ═══════════════════════════════════════════
+   SKELETON LOADER
+   ═══════════════════════════════════════════ */
+
+.skeleton {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+
+/* ═══════════════════════════════════════════
+   TOOLTIP
+   ═══════════════════════════════════════════ */
+
+.tooltip {
+    position: absolute;
+    z-index: var(--z-toast);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-dark);
+    border: var(--border-glass);
+    font-size: var(--text-xs);
+    color: var(--color-text-300);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: fade-in 0.15s ease-out;
+}

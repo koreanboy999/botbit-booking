@@ -1,0 +1,277 @@
+/* ============================================================
+   BotBit.cc Design System — Utility Classes
+   Reusable utility classes extracted from Stitch output
+   ============================================================ */
+
+/* ─────────────────────────────────────────────
+   GLASSMORPHISM — The signature BotBit effect
+   Exact values from Stitch Hero screen
+   ───────────────────────────────────────────── */
+
+.glass-card {
+    background: var(--color-bg-elevated);
+    /* rgba(255,255,255,0.03) */
+    backdrop-filter: var(--backdrop-blur);
+    /* blur(10px) */
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: var(--border-glass);
+    /* 1px solid rgba(0,255,136,0.1) */
+}
+
+.glass-card-strong {
+    background: var(--color-bg-elevated);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: var(--border-glass-strong);
+    /* 1px solid rgba(0,255,136,0.2) */
+}
+
+/* ─────────────────────────────────────────────
+   GRID BACKGROUND — Subtle green grid pattern
+   ───────────────────────────────────────────── */
+
+.grid-bg {
+    background-image:
+        linear-gradient(to right, var(--color-primary-5) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-primary-5) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ─────────────────────────────────────────────
+   GRADIENT TEXT — Primary gradient from Stitch
+   ───────────────────────────────────────────── */
+
+.text-gradient {
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-vertical {
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ─────────────────────────────────────────────
+   GLOW EFFECTS
+   ───────────────────────────────────────────── */
+
+.glow-sm {
+    box-shadow: var(--shadow-glow-sm);
+}
+
+.glow-md {
+    box-shadow: var(--shadow-glow-md);
+}
+
+.glow-lg {
+    box-shadow: var(--shadow-glow-lg);
+}
+
+.glow-xl {
+    box-shadow: var(--shadow-glow-xl);
+}
+
+.hover\:glow-sm:hover {
+    box-shadow: var(--shadow-glow-sm);
+}
+
+.hover\:glow-md:hover {
+    box-shadow: var(--shadow-glow-md);
+}
+
+.hover\:glow-lg:hover {
+    box-shadow: var(--shadow-glow-lg);
+}
+
+.hover\:glow-xl:hover {
+    box-shadow: var(--shadow-glow-xl);
+}
+
+/* Text glow */
+.text-glow {
+    text-shadow: 0 0 10px var(--color-primary-50), 0 0 20px var(--color-primary-30);
+}
+
+.text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* ─────────────────────────────────────────────
+   COLOR UTILITIES
+   ───────────────────────────────────────────── */
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-white {
+    color: var(--color-text-white);
+}
+
+.text-100 {
+    color: var(--color-text-100);
+}
+
+.text-300 {
+    color: var(--color-text-300);
+}
+
+.text-400 {
+    color: var(--color-text-400);
+}
+
+.text-500 {
+    color: var(--color-text-500);
+}
+
+.text-600 {
+    color: var(--color-text-600);
+}
+
+.text-success {
+    color: var(--color-success);
+}
+
+.text-warning {
+    color: var(--color-warning);
+}
+
+.text-error {
+    color: var(--color-error);
+}
+
+.text-info {
+    color: var(--color-info);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-dark {
+    background-color: var(--color-bg-dark);
+}
+
+.bg-elevated {
+    background-color: var(--color-bg-elevated);
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT UTILITIES
+   ───────────────────────────────────────────── */
+
+/* Container — matches Stitch max-w-7xl */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: var(--space-10);
+        padding-right: var(--space-10);
+    }
+}
+
+/* Section padding (matches Stitch py-12 lg:py-24) */
+.section {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+    .section {
+        padding-top: var(--space-24);
+        padding-bottom: var(--space-24);
+    }
+}
+
+/* Flex shortcuts */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────
+   BORDER UTILITIES
+   ───────────────────────────────────────────── */
+
+.border-glass {
+    border: var(--border-glass);
+}
+
+.border-glass-strong {
+    border: var(--border-glass-strong);
+}
+
+.border-primary-b {
+    border-bottom: 1px solid var(--color-primary-20);
+}
+
+/* ─────────────────────────────────────────────
+   TRUNCATION
+   ───────────────────────────────────────────── */
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────
+   POINTER / CURSOR
+   ───────────────────────────────────────────── */
+
+.cursor-default {
+    cursor: default;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* ─────────────────────────────────────────────
+   SCREEN READER ONLY
+   ───────────────────────────────────────────── */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
