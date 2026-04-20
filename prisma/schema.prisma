@@ -8,14 +8,15 @@ datasource db {
 }
 
 model User {
-  id           String           @id @default(cuid())
-  username     String           @unique
-  passwordHash String
-  displayName  String
-  role         Role             @default(LEADER)
-  bookings     BookingRequest[]
-  createdAt    DateTime         @default(now())
-  updatedAt    DateTime         @updatedAt
+  id             String           @id @default(cuid())
+  username       String           @unique
+  passwordHash   String
+  displayName    String
+  role           Role             @default(LEADER)
+  telegramChatId String?          @unique // Telegram chat ID for notifications
+  bookings       BookingRequest[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
 }
 
 enum Role {
@@ -31,10 +32,11 @@ model BookingRequest {
   status        Status   @default(PENDING)
   zoomLink      String?  // admin provided
   adminNote     String?  // admin notes on rejection
-  
+  reminderSent  Boolean  @default(false) // track if 30-min reminder was sent
+
   userId        String
   user          User     @relation(fields: [userId], references: [id])
-  
+
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
@@ -43,4 +45,13 @@ enum Status {
   PENDING
   APPROVED
   CANCELLED
+}
+
+// Tracks Telegram bot registration conversation state (serverless-safe)
+model TelegramSession {
+  chatId    String   @id // Telegram chat ID
+  step      String   // LANG, USERNAME, PASSWORD
+  data      String   @default("{}") // JSON: { lang, username }
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

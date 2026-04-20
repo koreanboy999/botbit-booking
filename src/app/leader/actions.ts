@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import { verifyToken } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
+import { notifyAdminNewBooking } from '@/lib/telegram'
 
 export async function createBooking(formData: FormData) {
   const token = cookies().get('session')?.value
@@ -29,6 +30,9 @@ export async function createBooking(formData: FormData) {
       status: 'PENDING'
     }
   })
+
+  // Notify admin via Telegram
+  await notifyAdminNewBooking(session.displayName, meetingType, preferredTime, reason)
 
   revalidatePath('/leader')
   return { success: true }
